@@ -22,7 +22,7 @@ public class touch_destroy_RUp: MonoBehaviour
         {
             sphere.GetComponent<MeshRenderer>().material = Material3;
         }
-        else
+        if (wrong== false && Ok==false)
         {
             sphere.GetComponent<MeshRenderer>().material = Material2;
         }
