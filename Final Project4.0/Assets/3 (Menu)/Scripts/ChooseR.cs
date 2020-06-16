@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChooseL : MonoBehaviour
+public class ChooseR : MonoBehaviour
 {
     void Update()
     {

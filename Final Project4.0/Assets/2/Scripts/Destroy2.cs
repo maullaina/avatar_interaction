@@ -11,8 +11,12 @@ public class Destroy2 : MonoBehaviour
     private bool wrong = false;
     private bool Ok = false;
 
+    public float timer;
+
     void Update()
     {
+        timer += Time.deltaTime;
+
         if (wrong)
         {
             sphere.GetComponent<MeshRenderer>().material = Material1;
@@ -29,17 +33,21 @@ public class Destroy2 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if ( (other.tag == "handR" || other.tag == "handL") && Rand.id == 2)
+        if (timer > 1)
         {
-            goOk();
-        }
-        if ( (other.tag == "handR" || other.tag == "handL") && Rand.id != 2)
-        {
-            goWrong();
-        }
-        else
-        {
-            sphere.GetComponent<MeshRenderer>().material = Material2;
+            timer = 0;
+            if ( (other.tag == "handR" || other.tag == "handL") && Rand.id == 2)
+            {
+                goOk();
+            }
+            if ( (other.tag == "handR" || other.tag == "handL") && Rand.id != 2)
+            {
+                goWrong();
+            }
+            else
+            {
+                sphere.GetComponent<MeshRenderer>().material = Material2;
+            }
         }
     }
 

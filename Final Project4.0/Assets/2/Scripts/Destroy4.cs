@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroy1 : MonoBehaviour
+public class Destroy4 : MonoBehaviour
 {
     public GameObject sphere;
     public Material Material1;
@@ -11,8 +11,12 @@ public class Destroy1 : MonoBehaviour
     private bool wrong = false;
     private bool Ok = false;
 
+    public float timer;
+
     void Update()
     {
+        timer += Time.deltaTime;
+
         if (wrong)
         {
             sphere.GetComponent<MeshRenderer>().material = Material1;
@@ -29,17 +33,21 @@ public class Destroy1 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if ( (other.tag == "handR" || other.tag == "handL") && Rand.id == 1)
+        if (timer > 1)
         {
-            goOk();
-        }
-        if ( (other.tag == "handR" || other.tag == "handL") && Rand.id != 1)
-        {
-            goWrong();
-        }
-        else
-        {
-            sphere.GetComponent<MeshRenderer>().material = Material2;
+            timer = 0;
+            if ( (other.tag == "footR" || other.tag == "footL") && Rand.id == 4)
+            {
+                goOk();
+            }
+            if ( (other.tag == "footR" || other.tag == "footL") && Rand.id != 4)
+            {
+                goWrong();
+            }
+            else
+            {
+                sphere.GetComponent<MeshRenderer>().material = Material2;
+            }
         }
     }
     
